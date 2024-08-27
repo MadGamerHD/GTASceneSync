@@ -1,4 +1,4 @@
-## GTASceneSync IPL-IDE Blender Addon
+## GTASceneSync Blender Addon
 
 ### Overview
 The **GTASceneSync IPL-IDE** addon for Blender is designed to streamline the process of exporting 3D models and scenes into formats compatible with various Grand Theft Auto (GTA) games. This addon provides functionality for exporting objects in **IPL** (Item Placement List) and **IDE** (IDE Object Definition) formats, which are crucial for modding and managing scenes in GTA titles.
