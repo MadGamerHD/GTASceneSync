@@ -1,35 +1,29 @@
-## GTASceneSync Blender Addon
+GTASceneSync Blender Addon
+Overview
+The GTASceneSync IPL-IDE addon for Blender is a powerful tool for exporting 3D models and scenes into formats compatible with various Grand Theft Auto (GTA) games. This addon supports exporting objects in IPL (Item Placement List) and IDE (Object Definition) formats, essential for modding and scene management in GTA titles. With recent updates, GTA Vice City (VC) support has now been fully integrated, enhancing the addon’s versatility across the GTA modding community.
 
-### Overview
-The **GTASceneSync IPL-IDE** addon for Blender is designed to streamline the process of exporting 3D models and scenes into formats compatible with various Grand Theft Auto (GTA) games. This addon provides functionality for exporting objects in **IPL** (Item Placement List) and **IDE** (IDE Object Definition) formats, which are crucial for modding and managing scenes in GTA titles.
+Key Features
+Export to IPL (GTA San Andreas): Seamlessly export selected mesh objects from Blender into the IPL format used by GTA San Andreas, with options for incremental model IDs and configurable rotations.
+Export to IPL (GTA III): Effortlessly export objects to the IPL format used by GTA III, tailored to meet the specific requirements of this game's modding environment.
+Export to IPL (GTA Vice City): NEW! The latest update brings full support for exporting objects in the IPL format used by GTA Vice City. The export process now follows Vice City’s unique format, with hardcoded scaling and rotational values as per the game’s standards.
+Export to IDE: Define object properties and settings for your scenes by exporting object definitions to an IDE file, compatible with multiple GTA games.
 
-### Key Features
-- **Export to IPL (GTA San Andreas)**: Allows users to export selected mesh objects from Blender into the IPL format used by GTA San Andreas. This feature supports incremental model IDs and optional default rotations.
-- **Export to IPL (GTA III)**: Provides the capability to export objects to the IPL format used by GTA III, accommodating the specific needs of this game's modding environment.
-- **Export to IDE**: Enables the export of object definitions to an IDE file, which is used to define object properties and settings within the game.
+Installation
+Download the latest version of the addon.
+Open Blender and navigate to Edit > Preferences.
+In the Add-ons tab, click on Install.
+Select the downloaded .zip file and click Install Add-on.
+Enable the addon by checking the box next to GTASceneSync IPL-IDE in the list.
 
-### GTA VC IPL Export (Upcoming Feature)
-The GTA Vice City (VC) IPL export functionality is **currently under development** and is not yet available as part of the addon. While the groundwork has been laid for this feature, it is not fully integrated or operational at this time. We are actively working on finalizing this functionality to meet the specific requirements of the GTA VC modding framework.
+Usage
+Access the Addon: You’ll find new export options under File > Export, including the ability to export objects to GTA IPL and IDE formats.
+Select Objects: Choose the objects in Blender that you want to export.
+Export: Use the appropriate export option from the menu. With the latest update, the GTA Vice City IPL export is now available and ready for use alongside existing export options.
 
-**Note**: The GTA VC IPL export feature is not included in the addon at present. We plan to integrate this feature in future updates, so please stay tuned for its release.
+Future Updates
+Refinements for Vice City Support: Though Vice City support is now available, we will continue to refine and improve the functionality based on user feedback and ongoing testing.
+Bug Fixes and Optimizations: Regular updates will be provided to address any issues and enhance performance across all supported formats.
+Contact and Support
+For support, feedback, or inquiries, reach out to MadGamerHD on YouTube at bradzandmaxplays.
 
-### Installation
-1. **Download** the latest version of the addon.
-2. **Open Blender** and go to `Edit` > `Preferences`.
-3. Navigate to the `Add-ons` tab and click on `Install`.
-4. Select the downloaded `.zip` file and click `Install Add-on`.
-5. Enable the addon by checking the box next to `GTASceneSync IPL-IDE` in the list.
-
-### Usage
-1. **Access the Addon**: The addon adds a new menu under `File` > `Export`, where you can find options to export selected objects in the supported formats.
-2. **Select Objects**: Choose the objects you wish to export in Blender.
-3. **Export**: Use the relevant export option from the menu. Note that the GTA VC IPL export option will not be available until the feature is fully developed and integrated.
-
-### Future Updates
-- **GTA VC IPL Support**: Development is ongoing to complete the GTA VC IPL export feature. Updates will focus on integrating and perfecting this functionality to meet GTA VC modding standards.
-- **Bug Fixes and Enhancements**: The addon will receive regular updates to address issues and improve features based on user feedback and testing.
-
-### Contact and Support
-For any questions, feedback, or assistance, please contact MadGamerHD on YouTube at [bradzandmaxplays](https://www.youtube.com/@bradzandmaxplays).
-
-Stay tuned for future updates as we work to enhance the addon and expand its capabilities.
+Stay tuned for continued updates as we work to further develop and expand the capabilities of the GTASceneSync addon!
