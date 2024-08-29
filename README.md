@@ -25,6 +25,14 @@ The **GTASceneSync IPL-IDE** addon for Blender is a powerful tool for exporting 
 - **Refinements for Vice City Support**: Though Vice City support is now available, we will continue to refine and improve the functionality based on user feedback and ongoing testing.
 - **Bug Fixes and Optimizations**: Regular updates will be provided to address any issues and enhance performance across all supported formats.
 
+### Why GTASceneSync is Not Integrated with DragonFF?
+
+At this point, **GTASceneSync** is not integrated with **DragonFF** because we're focusing on fine-tuning the addon itself. While **DragonFF** is a valuable tool, our current priority is making sure **GTASceneSync** works smoothly as a dedicated solution for exporting IPL and IDE files. We’re still ironing out a few details,
+
+Integration with **DragonFF** may be something we explore down the line, but for now, we're focused on ensuring **GTASceneSync** meets all the needs of its users as we continue to work through remaining tasks.
+
+Thanks for your patience as we keep refining the addon!
+
 ### Contact and Support
 For support, feedback, or inquiries, reach out to MadGamerHD on YouTube at [bradzandmaxplays](https://www.youtube.com/@bradzandmaxplays).
 
