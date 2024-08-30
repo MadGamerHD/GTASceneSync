@@ -53,7 +53,7 @@ class ExportAsIPLVC(bpy.types.Operator):
                 pos_y = round(loc.y, 6)
                 pos_z = round(loc.z, 6)
                 
-                # Hardcode the output for rotation and scaling as requested
+                # Hardcode the output
                 rot_x = 1
                 rot_y = 1
                 rot_z = 1
