@@ -20,7 +20,7 @@ The **GTASceneSync IPL-IDE** addon for Blender is a powerful tool for exporting 
 1. **Access the Addon**: You’ll find new export options under `File` > `Export`, including the ability to export objects to GTA IPL and IDE formats.
 2. **Select Objects**: Choose the objects in Blender that you want to export.
 3. **GTASceneSync Panel**: Open the `GTASceneSync` panel in the `Object Properties` tab. Configure each object with:
-   - **Render Distance**: Set the render distance for each object, ranging from 300 to 1200. Use the arrows to adjust values in increments of 1.
+   - **Render Distance**: Set the render distance for each object, ranging from 299 to 1200. Use the arrows to adjust values in increments of 1.
    - **Texture Name**: Enter the texture or TXD name for each object.
    - **IDE Flags**: Assign specific flags to each object from a predefined list.
 4. **Export**: Use the appropriate export option from the menu. The GTA Vice City IPL export is now available and ready for use alongside existing export options.
