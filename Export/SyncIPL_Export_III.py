@@ -13,7 +13,7 @@ class ExportAsIPLIII(bpy.types.Operator):
     bl_label = "Export Selected as IPL (GTA III)"
 
     filepath: bpy.props.StringProperty(subtype="FILE_PATH")
-    model_id: bpy.props.IntProperty(name="Model ID", default=200)
+    model_id: bpy.props.IntProperty(name="Model ID", default=3153)
     apply_default_rotation: bpy.props.BoolProperty(name="Apply Default Rotation", default=False)
     default_rotation: bpy.props.FloatVectorProperty(name="Default Rotation (Euler)", subtype="EULER", default=(0.0, 0.0, 0.0))
 
