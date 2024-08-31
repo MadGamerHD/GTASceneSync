@@ -12,30 +12,10 @@ class ExportAsIDE(bpy.types.Operator):
 
     filepath: bpy.props.StringProperty(subtype="FILE_PATH")
     model_id: bpy.props.IntProperty(name="Starting Model ID", default=19388)
-    render_distance: bpy.props.FloatProperty(name="Render Distance", default=299, min=0, max=1200)
     
-    flag_options = [
-        ("0", "Default", ""),
-        ("1", "Render_Wet_Effects", ""),
-        ("2", "TOBJ_Night_Flag", ""),
-        ("16", "TOBJ_Day_Flag", ""),
-        ("4", "Alpha_Transparency_1", ""),
-        ("8", "Alpha_Transparency_2", ""),
-        ("32", "Interior_Object", ""),
-        ("64", "Disable_Shadow_Culling", ""),
-        ("128", "Exclude_Surface_From_Culling", ""),
-        ("256", "Disable_Draw_Distance", ""),
-        ("512", "Breakable_Window_1", ""),
-        ("1024", "Breakable_Window_2", ""),
-    ]
-    
-    selected_flag: bpy.props.EnumProperty(name="Object Flag", items=flag_options, default="0")
-
     def draw(self, context):
         layout = self.layout
         layout.prop(self, "model_id")
-        layout.prop(self, "render_distance")
-        layout.prop(self, "selected_flag")
 
     def execute(self, context):
         selected_objects = [obj for obj in bpy.context.selected_objects if obj.type == 'MESH']
@@ -51,17 +31,24 @@ class ExportAsIDE(bpy.types.Operator):
         unique_names = {}
         current_id = self.model_id
         
-        for obj in selected_objects:
-            base_name = clean_name(obj.name)
-            if base_name not in unique_names:
-                unique_names[base_name] = current_id
-                current_id += 1
-        
         with open(self.filepath, 'w') as file:
             file.write("objs\n")
             
-            for name, obj_id in unique_names.items():
-                line = f"{obj_id}, {name}, generic, {self.render_distance}, {self.selected_flag}\n"
+            for obj in selected_objects:
+                base_name = clean_name(obj.name)
+                
+                # Get custom properties
+                ide_flag = obj.ide_flags.ide_flag if hasattr(obj, 'ide_flags') else "0"
+                render_distance = obj.ide_flags.render_distance if hasattr(obj, 'ide_flags') else 299
+                texture_name = obj.ide_flags.texture_name if hasattr(obj, 'ide_flags') else "generic"
+                
+                if base_name not in unique_names:
+                    # Assign a unique ID to this base_name and increment for the next
+                    unique_names[base_name] = (current_id, texture_name, render_distance, ide_flag)
+                    current_id += 1
+
+            for base_name, (obj_id, texture_name, render_distance, ide_flag) in unique_names.items():
+                line = f"{obj_id}, {base_name}, {texture_name}, {render_distance}, {ide_flag}\n"
                 file.write(line)
             
             file.write("end\n")
