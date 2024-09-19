@@ -9,7 +9,7 @@ class OBJECT_OT_batch_rename(bpy.types.Operator):
     base_name: bpy.props.StringProperty(
         name="Base Name",
         description="Base name for renaming objects",
-        default="WuhuPart"
+        default="TypeName"
     )
     
     def execute(self, context):
