@@ -2,7 +2,7 @@ bl_info = {
     "name": "GTASceneSync IPL-IDE",
     "blender": (4, 0, 0),
     "category": "Object",
-    "version": (1, 9, 0),
+    "version": (2, 0, 0),
     "author": "MadGamer HD",
     "support": "COMMUNITY",
 }
@@ -13,6 +13,13 @@ from .Export.SyncIPL_Export_SA import ExportAsIPL
 from .Export.SyncIPL_Export_III import ExportAsIPLIII
 from .Export.SyncIPL_Export_VC import ExportAsIPLVC
 from .Menu.ide_flags_panel import GTASceneSyncPanel, IDEFlagsProperties
+from .Menu.Tools import (  # Import the new script
+    OBJECT_OT_batch_rename,
+    OBJECT_OT_reset_position,
+    OBJECT_OT_remove_materials,
+    OBJECT_OT_convert_to_collision,
+    VIEW3D_PT_batch_rename_panel,
+)
 
 class GTASceneSyncMenu(bpy.types.Menu):
     """Create a custom menu in the Blender UI"""
@@ -37,6 +44,11 @@ def register():
     bpy.utils.register_class(ExportAsIDE)
     bpy.utils.register_class(IDEFlagsProperties)
     bpy.utils.register_class(GTASceneSyncPanel)
+    bpy.utils.register_class(OBJECT_OT_batch_rename)
+    bpy.utils.register_class(OBJECT_OT_reset_position)
+    bpy.utils.register_class(OBJECT_OT_remove_materials)
+    bpy.utils.register_class(OBJECT_OT_convert_to_collision)
+    bpy.utils.register_class(VIEW3D_PT_batch_rename_panel)
     bpy.types.TOPBAR_MT_file_export.append(menu_func)
     bpy.types.Object.ide_flags = bpy.props.PointerProperty(type=IDEFlagsProperties)
 
@@ -48,6 +60,11 @@ def unregister():
     bpy.utils.unregister_class(ExportAsIDE)
     bpy.utils.unregister_class(IDEFlagsProperties)
     bpy.utils.unregister_class(GTASceneSyncPanel)
+    bpy.utils.unregister_class(OBJECT_OT_batch_rename)
+    bpy.utils.unregister_class(OBJECT_OT_reset_position)
+    bpy.utils.unregister_class(OBJECT_OT_remove_materials)
+    bpy.utils.unregister_class(OBJECT_OT_convert_to_collision)
+    bpy.utils.unregister_class(VIEW3D_PT_batch_rename_panel)
     bpy.types.TOPBAR_MT_file_export.remove(menu_func)
     del bpy.types.Object.ide_flags
 
