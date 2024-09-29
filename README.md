@@ -36,10 +36,10 @@
    - **Rename Objects**: Batch rename models based on collision data.
    - **Reset Position**: Set the position of all selected models to the origin (0, 0, 0).
 5. **Export**: Use the appropriate export option from the `File > Export` menu. The GTA Vice City IPL export is now available along with the existing export options.
-
+6. 
 ## Future Updates
-- **Continued Refinements**: Vice City support is functional, but ongoing improvements will be made based on user feedback and testing.
-- **Bug Fixes and Optimizations**: Regular updates will address any issues and optimize performance across all supported formats.
+- **Continued Refinements**: Support for GTA San Andreas, GTA III, and GTA Vice City is functional, but ongoing improvements will be made based on user feedback and testing for all three formats.
+- **Bug Fixes and Optimizations**: Regular updates will address any issues and optimize performance across all supported formats to ensure a smooth modding experience.
 
 ## Contact and Support
 For support, feedback, or inquiries, contact **MadGamerHD** on YouTube at [bradzandmaxplays](#).
