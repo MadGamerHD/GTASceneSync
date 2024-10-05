@@ -4,18 +4,19 @@
 **GTASceneSync** is a versatile Blender addon for exporting 3D models and scenes into formats compatible with *Grand Theft Auto* (GTA) games. It supports exporting objects in IPL (Item Placement List) and IDE (Object Definition) formats, essential for modding and scene management in GTA titles. The addon also provides tools for managing materials, object properties, and collisions. With the latest updates, additional functionalities have been added to streamline the modding process.
 
 ## Key Features
+
 - **Export to IPL (GTA San Andreas)**: Seamlessly export selected mesh objects from Blender into the IPL format used by GTA San Andreas. Key features include:
   - Incremental model IDs to avoid ID conflicts.
-  - Configurable quaternion-based rotations for precise object placement.
-  - Option to apply default rotations across all objects.
-  - Automatic cleanup of object names by removing numeric suffixes.
+  - Configurable quaternion-based rotations for precise object placement, allowing for accurate orientation.
+  - Option to apply default rotations across all objects for consistent placement.
+  - Automatic cleanup of object names by removing numeric suffixes to prevent naming issues.
 
 - **Export to IPL (GTA III)**: Effortlessly export objects to the IPL format used by GTA III, tailored to meet the specific requirements of the game's modding environment. Key features include:
   - Compatibility with GTA III’s object placement system.
   - Support for game-specific scaling and rotation requirements.
 
-- **Export to IPL (GTA Vice City)**: Full support for exporting objects in the IPL format used by GTA Vice City. The export process follows Vice City’s unique format, with hardcoded scaling and rotational values based on the game’s standards. Key features include:
-  - Accurate representation of objects in Vice City.
+- **Export to IPL (GTA Vice City)**: Full support for exporting objects in the IPL format used by GTA Vice City. The export process follows Vice City’s unique format, now utilizing quaternion-based rotations for accuracy. Key features include:
+  - Accurate representation of objects in Vice City with precise orientation.
   - Seamless integration with Vice City’s object system.
 
 - **Export to IDE (GTA San Andreas)**: Define object properties and settings for your scenes by exporting object definitions to an IDE file. Key features include:
