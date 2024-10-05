@@ -46,7 +46,7 @@
    - **IDE Flags**: Assign specific flags to each object from a predefined list.
 4. **Tool Menu Operations**: Open the **GTASceneSync Tools** menu for batch operations:
    - **Remove Materials**: Strip materials from all selected models.
-   - **Convert to Collisions**: Convert models into their respective collision objects.
+   - **Convert to Collisions**: Convert models into their respective collision objects Requires DragonFF.
    - **Rename Objects**: Batch rename models based on collision data.
    - **Reset Position**: Set the position of all selected models to the origin (0, 0, 0).
 5. **Export**: Use the appropriate export option from the `File > Export` menu. The GTA Vice City IPL export is now available along with the existing export options.
