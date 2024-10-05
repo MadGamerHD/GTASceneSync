@@ -27,7 +27,7 @@
 - **Tool Menu for Batch Operations**: Access new tools under the GTASceneSync panel, located in the `Object Properties` tab or via the `GTASceneSync Tools` menu.
   - **Remove Materials**: Select models and use the option to remove all materials from the selected objects.
   - **Convert to Collisions**: Automatically convert selected models into collision objects Requires DragonFF.
-  - **Rename Objects**: Rename all selected models based on their collision data or other properties.
+  - **Rename Objects**: Rename all selected models.
   - **Reset Position**: Quickly reset the position of selected objects to the origin (0, 0, 0) for easier scene management.
 
 ## Installation
@@ -47,7 +47,7 @@
 4. **Tool Menu Operations**: Open the **GTASceneSync Tools** menu for batch operations:
    - **Remove Materials**: Strip materials from all selected models.
    - **Convert to Collisions**: Convert models into their respective collision objects Requires DragonFF.
-   - **Rename Objects**: Batch rename models based on collision data.
+   - **Rename Objects**: Batch rename models.
    - **Reset Position**: Set the position of all selected models to the origin (0, 0, 0).
 5. **Export**: Use the appropriate export option from the `File > Export` menu. The GTA Vice City IPL export is now available along with the existing export options.
 6. 
