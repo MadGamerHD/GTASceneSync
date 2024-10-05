@@ -11,7 +11,7 @@ class ExportAsIPL(bpy.types.Operator):
     bl_label = "Export Selected as IPL (GTA SA)"
 
     filepath: bpy.props.StringProperty(subtype="FILE_PATH")
-    model_id: bpy.props.IntProperty(name="Starting Model ID", default=19388)
+    model_id: bpy.props.IntProperty(name="Starting Model ID", default=19378)
     apply_default_rotation: bpy.props.BoolProperty(name="Apply Default Rotation", default=False)
     default_rotation: bpy.props.FloatVectorProperty(name="Default Rotation (Euler)", subtype="EULER", default=(0.0, 0.0, 0.0))
 
@@ -42,6 +42,7 @@ class ExportAsIPL(bpy.types.Operator):
             for obj in selected_objects:
                 loc = obj.location
                 
+                # Apply the default rotation or use the object's own rotation
                 if self.apply_default_rotation:
                     rot = self.default_rotation.to_quaternion()
                 else:
@@ -61,14 +62,14 @@ class ExportAsIPL(bpy.types.Operator):
                 pos_y = round(loc.y, 6)
                 pos_z = round(loc.z, 6)
                 
-                # Convert quaternion values to integers
-                quat_x = int(round(rot.x))
-                quat_y = int(round(rot.y))
-                quat_z = int(round(rot.z))
-                quat_w = int(round(rot.w))
+                # Use quaternion values without converting to integers
+                quat_x = round(rot.x, 6)
+                quat_y = round(rot.y, 6)
+                quat_z = round(rot.z, 6)
+                quat_w = round(rot.w, 6)
                 
-                # Write to file in the correct format
-                line = f"{obj_id}, {model_name}, 0, {pos_x:.6f}, {pos_y:.6f}, {pos_z:.6f}, {quat_x}, {quat_y}, {quat_z}, {quat_w}, -1\n"
+                # Write to file in the correct format with quaternion rotations
+                line = f"{obj_id}, {model_name}, 0, {pos_x:.6f}, {pos_y:.6f}, {pos_z:.6f}, {quat_x:.6f}, {quat_y:.6f}, {quat_z:.6f}, {quat_w:.6f}, -1\n"
                 file.write(line)
             
             file.write("end\n")
