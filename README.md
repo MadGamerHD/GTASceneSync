@@ -26,7 +26,7 @@
 ## New Features
 - **Tool Menu for Batch Operations**: Access new tools under the GTASceneSync panel, located in the `Object Properties` tab or via the `GTASceneSync Tools` menu.
   - **Remove Materials**: Select models and use the option to remove all materials from the selected objects.
-  - **Convert to Collisions**: Automatically convert selected models into collision objects.
+  - **Convert to Collisions**: Automatically convert selected models into collision objects Requires DragonFF.
   - **Rename Objects**: Rename all selected models based on their collision data or other properties.
   - **Reset Position**: Quickly reset the position of selected objects to the origin (0, 0, 0) for easier scene management.
 
