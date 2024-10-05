@@ -56,6 +56,6 @@
 - **Bug Fixes and Optimizations**: Regular updates will address any issues and optimize performance across all supported formats to ensure a smooth modding experience.
 
 ## Contact and Support
-For support, feedback, or inquiries, contact **MadGamerHD** on YouTube at [bradzandmaxplays](#).
+For support, feedback, or inquiries, contact **MadGamerHD** on YouTube at [bradzandmaxplays](https://www.youtube.com/@bradzandmaxplays).
 
 Stay tuned for more updates as we continue to expand the capabilities of the GTASceneSync addon!
