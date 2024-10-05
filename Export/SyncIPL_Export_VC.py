@@ -41,10 +41,13 @@ class ExportAsIPLVC(bpy.types.Operator):
                 
                 # Use default rotation if specified
                 if self.apply_default_rotation:
-                    rot = self.default_rotation
+                    rot_euler = self.default_rotation
                 else:
-                    rot = obj.rotation_euler
+                    rot_euler = obj.rotation_euler
                 
+                # Convert Euler to Quaternion
+                rot_quat = rot_euler.to_quaternion()  # Convert to quaternion
+
                 # Clean the name to remove any numeric suffixes
                 model_name = clean_name(obj.name) if obj.name else "Unnamed"
                 
@@ -53,17 +56,14 @@ class ExportAsIPLVC(bpy.types.Operator):
                 pos_y = round(loc.y, 6)
                 pos_z = round(loc.z, 6)
                 
-                # Hardcode the output
-                rot_x = 1
-                rot_y = 1
-                rot_z = 1
-                scale_x = 0
-                scale_y = 0
-                scale_z = 0
-                rot_w = 1
+                # Use quaternion values
+                rot_x = rot_quat.x
+                rot_y = rot_quat.y
+                rot_z = rot_quat.z
+                rot_w = rot_quat.w
                 
                 # Write the line in VC format
-                line = f"{self.model_id}, {model_name}, 0, {pos_x:.6f}, {pos_y:.6f}, {pos_z:.6f}, {rot_x}, {rot_y}, {rot_z}, {scale_x}, {scale_y}, {scale_z}, {rot_w}\n"
+                line = f"{self.model_id}, {model_name}, 0, {pos_x:.6f}, {pos_y:.6f}, {pos_z:.6f}, {rot_x}, {rot_y}, {rot_z}, 1.0, 1.0, 1.0, {rot_w}\n"
                 file.write(line)
                 
                 # Increment model ID for the next object
@@ -72,6 +72,7 @@ class ExportAsIPLVC(bpy.types.Operator):
             file.write("end\n")
 
         self.report({'INFO'}, "Export complete as IPL (VC)!")
+
         return {'FINISHED'}
 
     def invoke(self, context, event):
