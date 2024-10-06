@@ -19,7 +19,7 @@
   - Accurate representation of objects in Vice City with precise orientation.
   - Seamless integration with Vice City’s object system.
 
-- **Export to IDE (GTA San Andreas)**: Define object properties and settings for your scenes by exporting object definitions to an IDE file. Key features include:
+- **Export to IDE **: Define object properties and settings for your scenes by exporting object definitions to an IDE file. Key features include:
   - Customizable object flags to control special behaviors.
   - Adjustable render distances for optimizing performance.
   - Support for defining texture names (TXDs) to ensure proper in-game rendering.
