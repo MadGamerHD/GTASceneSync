@@ -32,7 +32,7 @@
   - **Reset Position**: Quickly reset the position of selected objects to the origin (0, 0, 0) for easier scene management.
 
 ## Installation
-1. [Download](#) the latest version of the addon.
+1. [Download](https://github.com/MadGamerHD/GTASceneSync/archive/refs/heads/main.zip) the latest version of the addon.
 2. Open Blender and navigate to `Edit > Preferences`.
 3. In the `Add-ons` tab, click on `Install`.
 4. Select the downloaded `.zip` file and click `Install Add-on`.
