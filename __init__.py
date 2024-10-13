@@ -13,13 +13,14 @@ from .Export.SyncIPL_Export_SA import ExportAsIPL
 from .Export.SyncIPL_Export_III import ExportAsIPLIII
 from .Export.SyncIPL_Export_VC import ExportAsIPLVC
 from .Menu.ide_flags_panel import GTASceneSyncPanel, IDEFlagsProperties
-from .Menu.Tools import (  # Import the new script
+from .Menu.Tools import (  # Import the existing tools
     OBJECT_OT_batch_rename,
     OBJECT_OT_reset_position,
     OBJECT_OT_remove_materials,
     OBJECT_OT_convert_to_collision,
     VIEW3D_PT_batch_rename_panel,
 )
+from .Menu.ToolsPanelTwo import ToolsPanelTwo, OBJECT_OT_set_texture_name  # Import the new tools panel and operator
 
 class GTASceneSyncMenu(bpy.types.Menu):
     """Create a custom menu in the Blender UI"""
@@ -49,6 +50,8 @@ def register():
     bpy.utils.register_class(OBJECT_OT_remove_materials)
     bpy.utils.register_class(OBJECT_OT_convert_to_collision)
     bpy.utils.register_class(VIEW3D_PT_batch_rename_panel)
+    bpy.utils.register_class(ToolsPanelTwo)  # Register the new tools panel
+    bpy.utils.register_class(OBJECT_OT_set_texture_name)  # Register the new operator for setting texture name
     bpy.types.TOPBAR_MT_file_export.append(menu_func)
     bpy.types.Object.ide_flags = bpy.props.PointerProperty(type=IDEFlagsProperties)
 
@@ -65,6 +68,8 @@ def unregister():
     bpy.utils.unregister_class(OBJECT_OT_remove_materials)
     bpy.utils.unregister_class(OBJECT_OT_convert_to_collision)
     bpy.utils.unregister_class(VIEW3D_PT_batch_rename_panel)
+    bpy.utils.unregister_class(ToolsPanelTwo)  # Unregister the new tools panel
+    bpy.utils.unregister_class(OBJECT_OT_set_texture_name)  # Unregister the new operator for setting texture name
     bpy.types.TOPBAR_MT_file_export.remove(menu_func)
     del bpy.types.Object.ide_flags
 
