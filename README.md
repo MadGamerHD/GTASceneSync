@@ -1,5 +1,11 @@
 # GTASceneSync 2.0.0 Blender Addon
 
+Notice Regarding Updates for GTASceneSync 2.0.0 Blender Addon
+
+I want to inform users that there may not be many updates for the GTASceneSync 2.0.0 Blender Addon in the near future. Due to ongoing considerations and potential changes to the development direction, there's a possibility that the addon may be remade from scratch. We appreciate your patience and understanding during this time, and we'll keep you updated on any major changes or progress.
+
+Thank you for using GTASceneSync!
+
 ## Overview
 **GTASceneSync** is a versatile Blender addon for exporting 3D models and scenes into formats compatible with *Grand Theft Auto* (GTA) games. It supports exporting objects in IPL (Item Placement List) and IDE (Object Definition) formats, essential for modding and scene management in GTA titles. The addon also provides tools for managing materials, object properties, and collisions. With the latest updates, additional functionalities have been added to streamline the modding process.
 
