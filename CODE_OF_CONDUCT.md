@@ -32,7 +32,6 @@ Refrain from posting false or misleading information about the addon.
 If you witness or experience behavior that violates this Code of Conduct, please report it to MadGamerHD through the following contact channels:
 
 YouTube: bradzandmaxplays
-Email: [Insert email address, if applicable]
 Consequences of Violations
 Violations of this Code of Conduct may result in:
 
