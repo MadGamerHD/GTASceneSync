@@ -1,5 +1,6 @@
 import bpy
 
+
 class IDEFlagsProperties(bpy.types.PropertyGroup):
     ide_flag: bpy.props.EnumProperty(
         name="IDE Flag",
@@ -31,53 +32,56 @@ class IDEFlagsProperties(bpy.types.PropertyGroup):
             ("4194304", "UNKNOWN-Unused-(Parts of a statue in Atrium) (?)", ""),
             ("1073741824", "Unknown", ""),
         ],
-        default="0"
+        default="0",
     )
-    
+
     render_distance: bpy.props.IntProperty(
         name="Render Distance",
         description="Set the render distance for the object",
         default=299,
         min=0,
         max=1200,
-        step=1
+        step=1,
     )
-    
+
     texture_name: bpy.props.StringProperty(
         name="Texture Name",
         description="Specify the texture or TXD name for the object",
-        default="generic"
+        default="generic",
     )
+
 
 class GTASceneSyncPanel(bpy.types.Panel):
     bl_label = "GTASceneSync"
     bl_idname = "OBJECT_PT_gtascenesync"
-    bl_space_type = 'PROPERTIES'
-    bl_region_type = 'WINDOW'
+    bl_space_type = "PROPERTIES"
+    bl_region_type = "WINDOW"
     bl_context = "object"
-    bl_category = 'Item'
+    bl_category = "Item"
 
     def draw(self, context):
         layout = self.layout
         obj = context.object
 
         if obj:
-            if not hasattr(obj, 'ide_flags'):
+            if not hasattr(obj, "ide_flags"):
                 obj.ide_flags = bpy.context.scene.ide_flags
-            
             layout.prop(obj.ide_flags, "ide_flag")
             layout.prop(obj.ide_flags, "render_distance")
             layout.prop(obj.ide_flags, "texture_name")
+
 
 def register():
     bpy.utils.register_class(IDEFlagsProperties)
     bpy.utils.register_class(GTASceneSyncPanel)
     bpy.types.Object.ide_flags = bpy.props.PointerProperty(type=IDEFlagsProperties)
 
+
 def unregister():
     bpy.utils.unregister_class(IDEFlagsProperties)
     bpy.utils.unregister_class(GTASceneSyncPanel)
     del bpy.types.Object.ide_flags
+
 
 if __name__ == "__main__":
     register()
