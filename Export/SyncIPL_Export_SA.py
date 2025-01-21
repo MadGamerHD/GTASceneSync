@@ -1,6 +1,7 @@
 import bpy
 import re
 
+
 def clean_name(name):
     """Remove numeric suffixes from the model name."""
     return re.sub(r"\.\d+$", "", name)
@@ -14,20 +15,20 @@ class ExportAsIPL(bpy.types.Operator):
 
     filepath: bpy.props.StringProperty(subtype="FILE_PATH")
     model_id: bpy.props.IntProperty(
-        name="Starting Model ID", 
+        name="Starting Model ID",
         default=19378,
-        description="Starting ID for the models"
+        description="Starting ID for the models",
     )
     apply_default_rotation: bpy.props.BoolProperty(
         name="Apply Default Rotation",
         default=False,
-        description="Apply a default rotation to all models"
+        description="Apply a default rotation to all models",
     )
     default_rotation: bpy.props.FloatVectorProperty(
         name="Default Rotation (Euler)",
         subtype="EULER",
         default=(0.0, 0.0, 0.0),
-        description="Default rotation values in Euler angles"
+        description="Default rotation values in Euler angles",
     )
 
     def draw(self, context):
@@ -52,7 +53,6 @@ class ExportAsIPL(bpy.types.Operator):
             if model_name not in model_id_mapping:
                 model_id_mapping[model_name] = current_id
                 current_id += 1  # Increment ID for next unique name
-
         return model_id_mapping
 
     def write_ipl_file(self, file, selected_objects, model_id_mapping):
@@ -70,6 +70,7 @@ class ExportAsIPL(bpy.types.Operator):
             obj_id = model_id_mapping.get(model_name, -1)
 
             # Round values for IPL format
+
             pos_x, pos_y, pos_z = round(loc.x, 6), round(loc.y, 6), round(loc.z, 6)
             quat_x, quat_y, quat_z, quat_w = (
                 round(rot.x, 6),
@@ -79,33 +80,35 @@ class ExportAsIPL(bpy.types.Operator):
             )
 
             # Write object data
+
             line = (
                 f"{obj_id}, {model_name}, 0, {pos_x:.6f}, {pos_y:.6f}, {pos_z:.6f}, "
                 f"{quat_x:.6f}, {quat_y:.6f}, {quat_z:.6f}, {quat_w:.6f}, -1\n"
             )
             file.write(line)
-
         file.write("end\n")
 
     def execute(self, context):
-        selected_objects = [obj for obj in bpy.context.selected_objects if obj.type == "MESH"]
+        selected_objects = [
+            obj for obj in bpy.context.selected_objects if obj.type == "MESH"
+        ]
 
         if not selected_objects:
             self.report({"WARNING"}, "No mesh objects selected for export.")
             return {"CANCELLED"}
-
         # Validate filepath and create model ID mapping
+
         self.validate_filepath()
         model_id_mapping = self.generate_model_id_mapping(selected_objects)
 
         # Write the IPL file
+
         try:
             with open(self.filepath, "w") as file:
                 self.write_ipl_file(file, selected_objects, model_id_mapping)
         except Exception as e:
             self.report({"ERROR"}, f"Failed to export IPL: {e}")
             return {"CANCELLED"}
-
         self.report({"INFO"}, f"Export complete as IPL! File saved to: {self.filepath}")
         return {"FINISHED"}
 
@@ -115,6 +118,8 @@ class ExportAsIPL(bpy.types.Operator):
 
 
 # Register the operator
+
+
 def menu_func_export(self, context):
     self.layout.operator(ExportAsIPL.bl_idname, text="Export Selected as IPL (GTA SA)")
 
