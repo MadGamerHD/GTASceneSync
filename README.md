@@ -1,9 +1,5 @@
 # GTASceneSync 2.0.0 Blender Addon
 
-Notice Regarding Updates for GTASceneSync 2.0.0 Blender Addon
-
-I want to inform users that there may not be many updates for the GTASceneSync 2.0.0 Blender Addon in the near future. Due to ongoing considerations and potential changes to the development direction, there's a possibility that the addon may be remade from scratch. We appreciate your patience and understanding during this time, and we'll keep you updated on any major changes or progress.
-
 Thank you for using GTASceneSync!
 
 ## Overview
