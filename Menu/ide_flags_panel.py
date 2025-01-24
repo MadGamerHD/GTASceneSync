@@ -1,37 +1,39 @@
 import bpy
 
+# Predefined IDE flags for better readability and maintainability
+IDE_FLAGS_ITEMS = [
+    ("0", "(SA)Default", "No special flags"),
+    ("1", "(SA)Render_Wet_Effects", "Object is rendered with wet effects"),
+    ("2", "(SA)TOBJ_Night_Flag", "Object texture is used for night time"),
+    ("16", "(SA)TOBJ_Day_Flag", "Object texture is used for day time"),
+    ("4", "(SA)Alpha_Transparency_1", "Object has first type of transparency"),
+    ("8", "(SA)Alpha_Transparency_2", "Object has second type of transparency"),
+    ("32", "(SA)Interior_Object", "Object is an interior object"),
+    ("64", "(SA)Disable_Shadow_Culling", "Object's shadow culling is disabled"),
+    ("128", "(SA)Exclude_Surface_From_Culling", "Excludes object from surface culling"),
+    ("256", "(SA)Disable_Draw_Distance", "Disables the object's draw distance"),
+    ("512", "(SA)Breakable_Window", "Object is a breakable window"),
+    ("1024", "(SA)Breakable_Window_With_Cracks", "Breakable window with cracks"),
+    ("2048", "(SA)Garage_door", "Object is a garage door"),
+    ("4096", "(SA)2-Clump-Object", "Object belongs to a clump"),
+    ("8192", "(SA)Small-Vegetation-Strong-wind-Effect", "Small vegetation affected by strong wind"),
+    ("16384", "(SA)Standard-Vegetation", "Standard vegetation object"),
+    ("32768", "(SA)Timecycle-PoleShadow-Flag", "Used in timecycle pole shadows"),
+    ("65536", "(SA)Explosive", "Explosive object"),
+    ("131072", "(SA)UNKNOWN-(Seems to be an SCM Flag)", "Uncertain flag, possibly an SCM flag"),
+    ("262144", "(SA)UNKNOWN-(1 Object in Jizzy`s Club)", "Uncertain flag related to Jizzy's Club"),
+    ("524288", "(SA)(SA)UNKNOWN-(?)", "Uncertain or unused flag"),
+    ("1048576", "(SA)Graffiti", "Object is graffiti"),
+    ("2097152", "(SA)Disable-backface-culling", "Disables backface culling"),
+    ("4194304", "(SA)UNKNOWN-Unused-(Parts of a statue in Atrium)", "Unused flag related to a statue"),
+    ("1073741824", "(SA)Unknown", "An unknown flag"),
+]
 
 class IDEFlagsProperties(bpy.types.PropertyGroup):
     ide_flag: bpy.props.EnumProperty(
         name="IDE Flag",
         description="Select the IDE flag for the object",
-        items=[
-            ("0", "Default", ""),
-            ("1", "Render_Wet_Effects", ""),
-            ("2", "TOBJ_Night_Flag", ""),
-            ("16", "TOBJ_Day_Flag", ""),
-            ("4", "Alpha_Transparency_1", ""),
-            ("8", "Alpha_Transparency_2", ""),
-            ("32", "Interior_Object", ""),
-            ("64", "Disable_Shadow_Culling", ""),
-            ("128", "Exclude_Surface_From_Culling", ""),
-            ("256", "Disable_Draw_Distance", ""),
-            ("512", "Breakable_Window", ""),
-            ("1024", "Breakable_Window_With_Cracks", ""),
-            ("2048", "Garage_door", ""),
-            ("4096", "2-Clump-Object", ""),
-            ("8192", "Small-Vegetation-Strong-wind-Effect", ""),
-            ("16384", "Standard-Vegetation", ""),
-            ("32768", "timecycle-PoleShadow-flag", ""),
-            ("65536", "Explosive", ""),
-            ("131072", "UNKNOWN-(Seems to be an SCM Flag)-(?)", ""),
-            ("262144", "UNKNOWN-(1 Object in Jizzy`s Club)-(?)", ""),
-            ("524288", "UNKNOWN-(?)", ""),
-            ("1048576", "Graffiti", ""),
-            ("2097152", "Disable-backface-culling", ""),
-            ("4194304", "UNKNOWN-Unused-(Parts of a statue in Atrium) (?)", ""),
-            ("1073741824", "Unknown", ""),
-        ],
+        items=IDE_FLAGS_ITEMS,
         default="0",
     )
 
@@ -63,12 +65,15 @@ class GTASceneSyncPanel(bpy.types.Panel):
         layout = self.layout
         obj = context.object
 
+        # Ensure there is an active object and that it has the ide_flags property
         if obj:
             if not hasattr(obj, "ide_flags"):
                 obj.ide_flags = bpy.context.scene.ide_flags
             layout.prop(obj.ide_flags, "ide_flag")
             layout.prop(obj.ide_flags, "render_distance")
             layout.prop(obj.ide_flags, "texture_name")
+        else:
+            layout.label(text="No active object selected")
 
 
 def register():
