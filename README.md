@@ -1,64 +1,63 @@
-# GTASceneSync 2.0.0 Blender Addon
+# GTASceneSync 2.0.0 Blender Addon  
 
-Thank you for using GTASceneSync!
+**Thank you for using GTASceneSync!**
 
-## Overview
-**GTASceneSync** is a versatile Blender addon for exporting 3D models and scenes into formats compatible with *Grand Theft Auto* (GTA) games. It supports exporting objects in IPL (Item Placement List) and IDE (Object Definition) formats, essential for modding and scene management in GTA titles. The addon also provides tools for managing materials, object properties, and collisions. With the latest updates, additional functionalities have been added to streamline the modding process.
+## Overview  
+**GTASceneSync** is a powerful Blender addon designed to streamline exporting 3D models and scenes into formats compatible with *Grand Theft Auto* (GTA) games, including GTA San Andreas, GTA III, and GTA Vice City. It supports exporting IPL (Item Placement List) and IDE (Object Definition) formats while providing tools to manage materials, object properties, and collisions—making it an essential utility for GTA modding and scene management.
 
-## Key Features
+## Key Features  
 
-- **Export to IPL (GTA San Andreas)**: Seamlessly export selected mesh objects from Blender into the IPL format used by GTA San Andreas. Key features include:
-  - Incremental model IDs to avoid ID conflicts.
-  - Configurable quaternion-based rotations for precise object placement, allowing for accurate orientation.
-  - Option to apply default rotations across all objects for consistent placement.
-  - Automatic cleanup of object names by removing numeric suffixes to prevent naming issues.
+### **Export to IPL**  
+- **GTA San Andreas**:  
+  - Export selected mesh objects with incremental model IDs to prevent conflicts.  
+  - Quaternion-based rotations for precise object orientation.  
+  - Options for default rotations and automatic cleanup of object names (removes numeric suffixes).  
 
-- **Export to IPL (GTA III)**: Effortlessly export objects to the IPL format used by GTA III, tailored to meet the specific requirements of the game's modding environment. Key features include:
-  - Compatibility with GTA III’s object placement system.
-  - Support for game-specific scaling and rotation requirements.
+- **GTA III**:  
+  - Export objects tailored to GTA III’s object placement system.  
+  - Support for scaling and rotation requirements specific to GTA III.  
 
-- **Export to IPL (GTA Vice City)**: Full support for exporting objects in the IPL format used by GTA Vice City. The export process follows Vice City’s unique format, now utilizing quaternion-based rotations for accuracy. Key features include:
-  - Accurate representation of objects in Vice City with precise orientation.
-  - Seamless integration with Vice City’s object system.
+- **GTA Vice City**:  
+  - Export objects with accurate quaternion-based rotations for precise in-game representation.  
+  - Fully integrated with Vice City’s object system.  
 
-- **Export to IDE **: Define object properties and settings for your scenes by exporting object definitions to an IDE file. Key features include:
-  - Customizable object flags to control special behaviors.
-  - Adjustable render distances for optimizing performance.
-  - Support for defining texture names (TXDs) to ensure proper in-game rendering.
-  
-## New Features
-- **Tool Menu for Batch Operations**: Access new tools under the GTASceneSync panel, located in the `Object Properties` tab or via the `GTASceneSync Tools` menu.
-  - **Remove Materials**: Select models and use the option to remove all materials from the selected objects.
-  - **Convert to Collisions**: Automatically convert selected models into collision objects Requires DragonFF.
-  - **Rename Objects**: Rename all selected models.
-  - **Reset Position**: Quickly reset the position of selected objects to the origin (0, 0, 0) for easier scene management.
+### **Export to IDE**  
+- Define object properties and settings for your scenes:  
+  - Customizable object flags to define special behaviors.  
+  - Adjustable render distances (0–1200 units) for optimized performance.  
+  - TXD name support for accurate in-game texture rendering.  
 
-## Installation
-1. [Download](https://github.com/MadGamerHD/GTASceneSync/archive/refs/heads/main.zip) the latest version of the addon.
-2. Open Blender and navigate to `Edit > Preferences`.
-3. In the `Add-ons` tab, click on `Install`.
-4. Select the downloaded `.zip` file and click `Install Add-on`.
-5. Enable the addon by checking the box next to **GTASceneSync IPL-IDE** in the list.
+### **Tool Menu for Batch Operations**  
+Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or the **GTASceneSync Tools** menu:  
+- **Remove Materials**: Strip all materials from selected models.  
+- **Convert to Collisions**: Automatically convert models into collision objects (requires DragonFF).  
+- **Rename Objects**: Batch rename selected models.  
+- **Reset Position**: Quickly reset object positions to (0, 0, 0).  
 
-## Usage
-1. **Access the Addon**: New export options are available under `File > Export`, including the ability to export objects to GTA IPL and IDE formats.
-2. **Select Objects**: Choose the objects in Blender that you want to export.
-3. **GTASceneSync Panel**: In the `Object Properties` tab, configure each object:
-   - **Render Distance**: Set the render distance (299 to 1200 units) with step increments of 1.
-   - **Texture Name**: Enter the texture or TXD name for each object.
-   - **IDE Flags**: Assign specific flags to each object from a predefined list.
-4. **Tool Menu Operations**: Open the **GTASceneSync Tools** menu for batch operations:
-   - **Remove Materials**: Strip materials from all selected models.
-   - **Convert to Collisions**: Convert models into their respective collision objects Requires DragonFF.
-   - **Rename Objects**: Batch rename models.
-   - **Reset Position**: Set the position of all selected models to the origin (0, 0, 0).
-5. **Export**: Use the appropriate export option from the `File > Export` menu. The GTA Vice City IPL export is now available along with the existing export options.
-6. 
-## Future Updates
-- **Continued Refinements**: Support for GTA San Andreas, GTA III, and GTA Vice City is functional, but ongoing improvements will be made based on user feedback and testing for all three formats.
-- **Bug Fixes and Optimizations**: Regular updates will address any issues and optimize performance across all supported formats to ensure a smooth modding experience.
+## Installation  
+1. [Download](https://github.com/MadGamerHD/GTASceneSync/archive/refs/heads/main.zip) the latest version of the addon.  
+2. Open Blender, go to `Edit > Preferences`.  
+3. Navigate to the `Add-ons` tab, click `Install`, and select the downloaded `.zip` file.  
+4. Enable the addon by checking **GTASceneSync IPL-IDE** in the list.  
 
-## Contact and Support
-For support, feedback, or inquiries, contact **MadGamerHD** on YouTube at [bradzandmaxplays](https://www.youtube.com/@bradzandmaxplays).
+## Usage  
+1. **Access the Addon**: Find export options under `File > Export`.  
+2. **Configure Objects**: In the **GTASceneSync Panel**:  
+   - Set render distances (299–1200 units).  
+   - Define TXD names.  
+   - Assign IDE flags from a predefined list.  
+3. **Batch Operations**: Use the **GTASceneSync Tools** menu to perform actions like removing materials or resetting object positions.  
+4. **Export**: Choose the appropriate format under `File > Export` (e.g., GTA Vice City IPL, GTA San Andreas IPL).  
 
-Stay tuned for more updates as we continue to expand the capabilities of the GTASceneSync addon!
+## New in 2.0.0  
+- Added support for GTA Vice City IPL export with quaternion-based rotations.  
+- New batch operations: Remove materials, convert to collisions, rename objects, and reset positions.  
+
+## Future Updates  
+- Ongoing refinements and bug fixes based on user feedback.  
+- Optimized performance for all supported GTA formats.  
+
+## Contact and Support  
+For feedback, inquiries, or support, reach out to **MadGamerHD** on YouTube at [bradzandmaxplays](https://www.youtube.com/@bradzandmaxplays).  
+
+Stay tuned for updates as we continue enhancing GTASceneSync!  
