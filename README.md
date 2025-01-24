@@ -1,4 +1,4 @@
-# GTASceneSync 2.0.0 Blender Addon  
+# GTASceneSync 2.0.0
 
 **Thank you for using GTASceneSync!**
 
