@@ -43,7 +43,7 @@ Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or th
 ## Usage  
 1. **Access the Addon**: Find export options under `File > Export`.  
 2. **Configure Objects**: In the **GTASceneSync Panel**:  
-   - Set render distances (299–1200 units).  
+   - Set render distances (0–1200 units).  
    - Define TXD names.  
    - Assign IDE flags from a predefined list.  
 3. **Batch Operations**: Use the **GTASceneSync Tools** menu to perform actions like removing materials or resetting object positions.  
