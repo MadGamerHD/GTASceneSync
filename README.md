@@ -37,10 +37,11 @@ Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or th
 - **Reset Position**: Quickly reset object positions to (0, 0, 0).  
 
 ## Installation  
-1. [Download](https://github.com/MadGamerHD/GTASceneSync/archive/refs/heads/main.zip) the latest version of the addon.  
-2. Open Blender, go to `Edit > Preferences`.  
-3. Navigate to the `Add-ons` tab, click `Install`, and select the downloaded `.zip` file.  
-4. Enable the addon by checking **GTASceneSync IPL-IDE** in the list.  
+1. [Download](https://github.com/MadGamerHD/GTASceneSync/archive/refs/heads/main.zip) the latest version of the addon.
+2. Also [DragonFF] (https://www.youtube.com/@bradzandmaxplays). Make Sure To Install Latest Or My Edit At Below
+3. Open Blender, go to `Edit > Preferences`.  
+4. Navigate to the `Add-ons` tab, click `Install`, and select the downloaded `.zip` file.  
+5. Enable the addon by checking **GTASceneSync IPL-IDE** in the list.  
 
 ## Usage  
 1. **Access the Addon**: Find export options under `File > Export`.  
