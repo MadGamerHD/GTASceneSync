@@ -52,7 +52,9 @@ Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or th
 ## New in 2.0.0  
 - Added support for GTA Vice City IPL export with quaternion-based rotations.  
 - New batch operations: Remove materials, convert to collisions, rename objects, and reset positions.  
-- Fixed crash issue in the IPL file for GTA San Andreas.  
+- Fixed crash issue in the IPL file for GTA San Andreas.
+- Now, export both the normal IPL and the binary IPL. Use fastman92_processor_1_9 to process the binary IPL file.
+- [Fastman92 processor](https://gtaforums.com/topic/857375-fastman92-processor/).
 
 ## Future Updates  
 - Ongoing refinements and bug fixes based on user feedback.  
