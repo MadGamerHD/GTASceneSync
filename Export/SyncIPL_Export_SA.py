@@ -1,11 +1,9 @@
 import bpy
 import re
 
-
 def clean_name(name):
     """Remove numeric suffixes from the model name."""
     return re.sub(r"\.\d+$", "", name)
-
 
 class ExportAsIPL(bpy.types.Operator):
     """Export Selected Objects as IPL with Incremental Model IDs"""
@@ -30,6 +28,15 @@ class ExportAsIPL(bpy.types.Operator):
         default=(0.0, 0.0, 0.0),
         description="Default rotation values in Euler angles",
     )
+    export_type: bpy.props.EnumProperty(
+        name="Export Type",
+        description="Choose the export format",
+        items=[
+            ('normal', "Normal", "Export in normal format"),
+            ('bnry', "Binary", "Export in binary format"),
+        ],
+        default='normal',
+    )
 
     def draw(self, context):
         layout = self.layout
@@ -37,6 +44,7 @@ class ExportAsIPL(bpy.types.Operator):
         layout.prop(self, "apply_default_rotation")
         if self.apply_default_rotation:
             layout.prop(self, "default_rotation")
+        layout.prop(self, "export_type")
 
     def validate_filepath(self):
         """Ensure the filepath has a valid .ipl extension."""
@@ -57,6 +65,9 @@ class ExportAsIPL(bpy.types.Operator):
 
     def write_ipl_file(self, file, selected_objects, model_id_mapping):
         """Write the IPL file content."""
+        # Write the comment at the top of the file
+        file.write("#Exported With GTASceneSync\n")
+        
         file.write("inst\n")
         for obj in selected_objects:
             loc = obj.location
@@ -70,7 +81,6 @@ class ExportAsIPL(bpy.types.Operator):
             obj_id = model_id_mapping.get(model_name, -1)
 
             # Round values for IPL format
-
             pos_x, pos_y, pos_z = round(loc.x, 6), round(loc.y, 6), round(loc.z, 6)
             quat_x, quat_y, quat_z, quat_w = (
                 round(rot.x, 6),
@@ -79,8 +89,11 @@ class ExportAsIPL(bpy.types.Operator):
                 round(rot.w, 6),
             )
 
-            # Write object data
+            # Check export type and adjust format
+            if self.export_type == 'bnry':
+                model_name = 'dummy'  # Change model name to 'dummy' for binary format
 
+            # Write object data
             line = (
                 f"{obj_id}, {model_name}, 0, {pos_x:.6f}, {pos_y:.6f}, {pos_z:.6f}, "
                 f"{quat_x:.6f}, {quat_y:.6f}, {quat_z:.6f}, {quat_w:.6f}, -1\n"
@@ -96,19 +109,19 @@ class ExportAsIPL(bpy.types.Operator):
         if not selected_objects:
             self.report({"WARNING"}, "No mesh objects selected for export.")
             return {"CANCELLED"}
-        # Validate filepath and create model ID mapping
 
+        # Validate filepath and create model ID mapping
         self.validate_filepath()
         model_id_mapping = self.generate_model_id_mapping(selected_objects)
 
         # Write the IPL file
-
         try:
             with open(self.filepath, "w") as file:
                 self.write_ipl_file(file, selected_objects, model_id_mapping)
         except Exception as e:
             self.report({"ERROR"}, f"Failed to export IPL: {e}")
             return {"CANCELLED"}
+
         self.report({"INFO"}, f"Export complete as IPL! File saved to: {self.filepath}")
         return {"FINISHED"}
 
@@ -116,23 +129,17 @@ class ExportAsIPL(bpy.types.Operator):
         context.window_manager.fileselect_add(self)
         return {"RUNNING_MODAL"}
 
-
 # Register the operator
-
-
 def menu_func_export(self, context):
     self.layout.operator(ExportAsIPL.bl_idname, text="Export Selected as IPL (GTA SA)")
-
 
 def register():
     bpy.utils.register_class(ExportAsIPL)
     bpy.types.TOPBAR_MT_file_export.append(menu_func_export)
 
-
 def unregister():
     bpy.utils.unregister_class(ExportAsIPL)
     bpy.types.TOPBAR_MT_file_export.remove(menu_func_export)
-
 
 if __name__ == "__main__":
     register()
