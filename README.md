@@ -11,7 +11,9 @@
 - **GTA San Andreas**:  
   - Export selected mesh objects with incremental model IDs to prevent conflicts.  
   - Quaternion-based rotations for precise object orientation.  
-  - Options for default rotations and automatic cleanup of object names (removes numeric suffixes).  
+  - Options for default rotations and automatic cleanup of object names (removes numeric suffixes).
+  -  Now, export both the normal IPL and the binary IPL. Use fastman92_processor_1_9 to process the binary IPL file.
+  - [Fastman92 processor](https://gtaforums.com/topic/857375-fastman92-processor/).
 
 - **GTA III**:  
   - Export objects tailored to GTA III’s object placement system.  
@@ -54,7 +56,6 @@ Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or th
 - New batch operations: Remove materials, convert to collisions, rename objects, and reset positions.  
 - Fixed crash issue in the IPL file for GTA San Andreas.
 - Now, export both the normal IPL and the binary IPL. Use fastman92_processor_1_9 to process the binary IPL file.
-- [Fastman92 processor](https://gtaforums.com/topic/857375-fastman92-processor/).
 
 ## Future Updates  
 - Ongoing refinements and bug fixes based on user feedback.  
