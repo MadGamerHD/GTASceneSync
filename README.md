@@ -42,7 +42,7 @@ Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or th
 
 ## Installation  
 1. [Download the latest version](https://github.com/MadGamerHD/GTASceneSync/archive/refs/heads/main.zip) of the addon.
-2. Install [DragonFF](https://www.youtube.com/@bradzandmaxplays). Make sure to install the latest version or my edit below.  
+2. Install [DragonFF](https://github.com/Parik27/DragonFF). Make sure to install the latest version or my edit below.  
 3. Open Blender, go to `Edit > Preferences`.  
 4. Navigate to the `Add-ons` tab, click `Install`, and select the downloaded `.zip` file.  
 5. Enable the addon by checking **GTASceneSync IPL-IDE** in the list.
