@@ -13,7 +13,7 @@ from .Export.SyncIPL_Export_SA import ExportAsIPL
 from .Export.SyncIPL_Export_III import ExportAsIPLIII
 from .Export.SyncIPL_Export_VC import ExportAsIPLVC
 from .Menu.ide_flags_panel import GTASceneSyncPanel, IDEFlagsProperties
-from .Menu.Tools import (  # Import the existing tools
+from .Menu.Tools import (
     OBJECT_OT_batch_rename,
     OBJECT_OT_reset_position,
     OBJECT_OT_remove_materials,
@@ -23,8 +23,8 @@ from .Menu.Tools import (  # Import the existing tools
 from .Menu.ToolsPanelTwo import (
     ToolsPanelTwo,
     OBJECT_OT_set_texture_name,
-)  # Import the new tools panel and operator
-
+)
+from .Export.Sync2DFX_Export import register as register_2dfx, unregister as unregister_2dfx
 
 class GTASceneSyncMenu(bpy.types.Menu):
     """Create a custom menu in the Blender UI"""
@@ -41,10 +41,8 @@ class GTASceneSyncMenu(bpy.types.Menu):
         layout.operator(ExportAsIPLVC.bl_idname, text="Export Selected as IPL (VC)")
         layout.operator(ExportAsIDE.bl_idname, text="Export Selected as IDE")
 
-
 def menu_func(self, context):
     self.layout.menu(GTASceneSyncMenu.bl_idname)
-
 
 def register():
     bpy.utils.register_class(GTASceneSyncMenu)
@@ -59,13 +57,13 @@ def register():
     bpy.utils.register_class(OBJECT_OT_remove_materials)
     bpy.utils.register_class(OBJECT_OT_convert_to_collision)
     bpy.utils.register_class(VIEW3D_PT_batch_rename_panel)
-    bpy.utils.register_class(ToolsPanelTwo)  # Register the new tools panel
-    bpy.utils.register_class(
-        OBJECT_OT_set_texture_name
-    )  # Register the new operator for setting texture name
+    bpy.utils.register_class(ToolsPanelTwo)
+    bpy.utils.register_class(OBJECT_OT_set_texture_name)
     bpy.types.TOPBAR_MT_file_export.append(menu_func)
     bpy.types.Object.ide_flags = bpy.props.PointerProperty(type=IDEFlagsProperties)
 
+    # Registering the new 2DFX export functionality
+    register_2dfx()
 
 def unregister():
     bpy.utils.unregister_class(GTASceneSyncMenu)
@@ -80,13 +78,13 @@ def unregister():
     bpy.utils.unregister_class(OBJECT_OT_remove_materials)
     bpy.utils.unregister_class(OBJECT_OT_convert_to_collision)
     bpy.utils.unregister_class(VIEW3D_PT_batch_rename_panel)
-    bpy.utils.unregister_class(ToolsPanelTwo)  # Unregister the new tools panel
-    bpy.utils.unregister_class(
-        OBJECT_OT_set_texture_name
-    )  # Unregister the new operator for setting texture name
+    bpy.utils.unregister_class(ToolsPanelTwo)
+    bpy.utils.unregister_class(OBJECT_OT_set_texture_name)
     bpy.types.TOPBAR_MT_file_export.remove(menu_func)
     del bpy.types.Object.ide_flags
 
+    # Unregistering the 2DFX export functionality
+    unregister_2dfx()
 
 if __name__ == "__main__":
     register()
