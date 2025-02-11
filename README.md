@@ -61,6 +61,7 @@ Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or th
 - New batch operations: Remove materials, convert to collisions, rename objects, and reset positions.  
 - Fixed a crash issue in the IPL export for GTA San Andreas.  
 - Support for exporting both regular and binary IPL formats. Use Fastman92 Processor to process the binary IPL file.
+- Export to a 2DFX file by selecting a cube or mesh, positioning it, and choosing a particle in the panel.  
 
 ## Future Updates  
 - Ongoing bug fixes and optimizations based on user feedback.  
