@@ -1,15 +1,13 @@
 import bpy
+import re
 from bpy.props import StringProperty, EnumProperty
 from io import StringIO
+from pathlib import Path
 
-# Define Particle List
-particle_effects = [
+# Define Particle Effects as a constant
+PARTICLE_EFFECTS = [
     ("prt_blood", "prt_blood", "spark? maybe meant to be a mini red blood splash"),  # 0
-    (
-        "prt_boatsplash",
-        "prt_boatsplash",
-        "from a boat splashing in the water. looks like the soap in the car wash",
-    ),  # 1
+    ("prt_boatsplash", "prt_boatsplash", "from a boat splashing in the water. looks like the soap in the car wash"),  # 1
     ("prt_bubble", "prt_bubble", "bubble!"),  # 2
     ("prt_cardebris", "prt_cardebris", "car debris. like when you crash a car"),  # 3
     ("prt_collisionsmoke", "prt_collisionsmoke", "thick white smoke"),  # 4
@@ -23,20 +21,12 @@ particle_effects = [
     ("prt_spark_2", "prt_spark_2", "powerful sparks flying upwards"),  # 12
     ("prt_splash", "prt_splash", "water splash"),  # 13
     ("prt_wake", "prt_wake", "movement in the water"),  # 14
-    (
-        "prt_watersplash",
-        "prt_watersplash",
-        "splash of water. like when a car lands in deep water",
-    ),  # 15
+    ("prt_watersplash", "prt_watersplash", "splash of water. like when a car lands in deep water"),  # 15
     ("prt_wheeldirt", "prt_wheeldirt", "puff of dust"),  # 16
     ("boat_prop", "boat_prop", "tiny water splash?"),  # 17
     ("camflash", "camflash", "flash of a camera... cheese!"),  # 18
     ("exhale", "exhale", "exhaled smoke"),  # 19
-    (
-        "explosion_fuel_car",
-        "explosion_fuel_car",
-        "a seemingly randomized small explosion",
-    ),  # 20
+    ("explosion_fuel_car", "explosion_fuel_car", "a seemingly randomized small explosion"),  # 20
     ("explosion_large", "explosion_large", "huge explosion with debris"),  # 21
     ("explosion_medium", "explosion_medium", "big explosion with debris"),  # 22
     ("explosion_molotov", "explosion_molotov", "molotov cocktail explosion"),  # 23
@@ -51,55 +41,19 @@ particle_effects = [
     ("flamethrower", "flamethrower", "flame being thrown..."),  # 32
     ("gunflash", "gunflash", "flash at the end of a gun being fired"),  # 33
     ("gunsmoke", "gunsmoke", "small smoke from a gun"),  # 34
-    (
-        "heli_dust",
-        "heli_dust",
-        "dust particles being blown around by a helicopter's propellers",
-    ),  # 35
-    (
-        "jetpack",
-        "jetpack",
-        "flame from a jetpack. colour changes between yellow and blue",
-    ),  # 36
-    (
-        "jetthrust",
-        "jetthrust",
-        "weak blue flame from muffler of car during the use of nitro",
-    ),  # 37
-    (
-        "molotov_flame",
-        "molotov_flame",
-        "the fire from the rag of a molotov cocktail",
-    ),  # 38
+    ("heli_dust", "heli_dust", "dust particles being blown around by a helicopter's propellers"),  # 35
+    ("jetpack", "jetpack", "flame from a jetpack. colour changes between yellow and blue"),  # 36
+    ("jetthrust", "jetthrust", "weak blue flame from muffler of car during the use of nitro"),  # 37
+    ("molotov_flame", "molotov_flame", "the fire from the rag of a molotov cocktail"),  # 38
     ("nitro", "nitro", "nitro. varying colour/size etc."),  # 39
-    (
-        "overheat_car",
-        "overheat_car",
-        "smoke from the hood of a damaged car. varying grey colour",
-    ),  # 40
-    (
-        "overheat_car_electric",
-        "overheat_car_electric",
-        "similar to the damaged car smoke. has yellow electric sparks",
-    ),  # 41
-    (
-        "riot_smoke",
-        "riot_smoke",
-        "huge smoke that appears above buildings during the LS Riots",
-    ),  # 42
+    ("overheat_car", "overheat_car", "smoke from the hood of a damaged car. varying grey colour"),  # 40
+    ("overheat_car_electric", "overheat_car_electric", "similar to the damaged car smoke. has yellow electric sparks"),  # 41
+    ("riot_smoke", "riot_smoke", "huge smoke that appears above buildings during the LS Riots"),  # 42
     ("spraycan", "spraycan", "green spray paint from the spray can"),  # 43
-    (
-        "tank_fire",
-        "tank_fire",
-        "large blast followed by smoke. like at the end of a tank's turret during fire",
-    ),  # 44
+    ("tank_fire", "tank_fire", "large blast followed by smoke. like at the end of a tank's turret during fire"),  # 44
     ("teargas", "teargas", "small gas explosion from a gas grenade"),  # 45
     ("teargasAD", "teargasAD", "large spreading gas from a gas grenade"),  # 46
-    (
-        "water_hydrant",
-        "water_hydrant",
-        "jet of water as from a fire hydrant. audio included",
-    ),  # 47
+    ("water_hydrant", "water_hydrant", "jet of water as from a fire hydrant. audio included"),  # 47
     ("water_ripples", "water_ripples", "circular ripples in the water"),  # 48
     ("water_speed", "water_speed", "big splash in water"),  # 49
     ("water_splash", "water_splash", "small splash in water"),  # 50
@@ -115,16 +69,8 @@ particle_effects = [
     ("vent", "vent", "thin smoke"),  # 60
     ("vent2", "vent2", "thin smoke"),  # 61
     ("waterfall_end", "waterfall_end", "mist from the bottom of a waterfall"),  # 62
-    (
-        "water_fnt_tme",
-        "water_fnt_tme",
-        "upward jet of water from a fountain with sfx",
-    ),  # 63
-    (
-        "water_fountain",
-        "water_fountain",
-        "upward jet of water from a fountain with sfx",
-    ),  # 64
+    ("water_fnt_tme", "water_fnt_tme", "upward jet of water from a fountain with sfx"),  # 63
+    ("water_fountain", "water_fountain", "upward jet of water from a fountain with sfx"),  # 64
     ("tree_hit_fir", "tree_hit_fir", "small green leaves falling"),  # 65
     ("tree_hit_palm", "tree_hit_palm", "large green leaves falling"),  # 66
     ("blood_heli", "blood_heli", "explosion of blood"),  # 67
@@ -136,28 +82,19 @@ particle_effects = [
     ("explosion_barrel", "explosion_barrel", "a wooden explosion"),  # 73
     ("explosion_crate", "explosion_crate", "a wooden explosion"),  # 74
     ("explosion_door", "explosion_door", "smoke and sparks"),  # 75
-    (
-        "petrolcan",
-        "petrolcan",
-        "shooting/trickling water/fuel. used as a peeing effect",
-    ),  # 76
+    ("petrolcan", "petrolcan", "shooting/trickling water/fuel. used as a peeing effect"),  # 76
     ("puke", "puke", "yesterdays dinner"),  # 77
-    (
-        "shootlight",
-        "shootlight",
-        "a light being shot out (used for searchlights). sparks and glass",
-    ),  # 78
+    ("shootlight", "shootlight", "a light being shot out (used for searchlights). sparks and glass"),  # 78
 ]
 
-# Ensure particle_name property exists on all objects
-def register_particle_property():
+def register_particle_property() -> None:
+    """Register custom particle properties on bpy.types.Object."""
     bpy.types.Object.particle_name = EnumProperty(
         name="Particle Name",
         description="Select a particle type",
-        items=particle_effects,
+        items=PARTICLE_EFFECTS,
         default="prt_blood",
     )
-
     bpy.types.Object.particle_names = StringProperty(
         name="Particle Names",
         description="Comma-separated list of particle names",
@@ -165,38 +102,42 @@ def register_particle_property():
     )
 
 class Export2DFXOperator(bpy.types.Operator):
-    """Export selected objects to a 2DFX text file"""
-
+    """Export selected objects to a 2DFX text file."""
     bl_idname = "export_scene.2dfx"
     bl_label = "Export 2DFX"
 
     filepath: StringProperty(subtype="FILE_PATH")
 
     def execute(self, context):
-        selected_objects = bpy.context.selected_objects
+        selected_objects = context.selected_objects
         if not selected_objects:
             self.report({"ERROR"}, "No objects selected")
             return {"CANCELLED"}
-        
+
         buffer = StringIO()
         buffer.write(f"NumEntries       {len(selected_objects)}\n")
 
         for i, obj in enumerate(selected_objects, start=1):
-            position = obj.location
-            # Get the list of particle names from the object's property
-            particle_names = getattr(obj, "particle_names", "").split(",")
-            
+            pos = obj.location
+            # Retrieve particle names (fallback to "prt_blood" if not set) and split by comma
+            particle_names = getattr(obj, "particle_names", "prt_blood").split(",")
             for particle_name in particle_names:
+                particle_name = particle_name.strip()
+                if not particle_name:
+                    continue
                 buffer.write(f"######################### {i} #########################\n")
-                buffer.write(f"2dfxType         PARTICLE\n")
-                buffer.write(
-                    f"Position         {position.x:.6f} {position.y:.6f} {position.z:.6f}\n"
-                )
-                buffer.write(f"Name             {particle_name.strip()}\n")
+                buffer.write("2dfxType         PARTICLE\n")
+                buffer.write(f"Position         {pos.x:.6f} {pos.y:.6f} {pos.z:.6f}\n")
+                buffer.write(f"Name             {particle_name}\n")
 
-        # Save to file
-        with open(self.filepath, "w") as f:
-            f.write(buffer.getvalue())
+        # Write output to file with UTF-8 encoding
+        try:
+            with open(self.filepath, "w", encoding="utf-8") as f:
+                f.write(buffer.getvalue())
+        except Exception as e:
+            self.report({"ERROR"}, f"Failed to write file: {e}")
+            return {"CANCELLED"}
+
         self.report({"INFO"}, f"Exported to {self.filepath}")
         return {"FINISHED"}
 
@@ -204,10 +145,8 @@ class Export2DFXOperator(bpy.types.Operator):
         context.window_manager.fileselect_add(self)
         return {"RUNNING_MODAL"}
 
-
 class Export2DFXMenu(bpy.types.Menu):
     """2DFX Export Menu in File > Export"""
-
     bl_label = "Export 2DFX"
     bl_idname = "EXPORT_MT_2dfx"
 
@@ -215,10 +154,8 @@ class Export2DFXMenu(bpy.types.Menu):
         layout = self.layout
         layout.operator(Export2DFXOperator.bl_idname, text="2DFX Export (.txt)")
 
-
 class ParticlePanel(bpy.types.Panel):
     """Panel to Select Particle Type per Object"""
-
     bl_label = "2DFX Particle Settings"
     bl_idname = "OBJECT_PT_2dfx"
     bl_space_type = "PROPERTIES"
@@ -230,29 +167,26 @@ class ParticlePanel(bpy.types.Panel):
         obj = context.object
         if obj:
             layout.prop(obj, "particle_name")
-            layout.prop(obj, "particle_names")  # Add the particle_names property
-
+            layout.prop(obj, "particle_names")
 
 def menu_func_export(self, context):
-    self.layout.menu(Export2DFXMenu.bl_idname)  # Add to the export menu
+    self.layout.menu(Export2DFXMenu.bl_idname)
 
+# List of classes for simplified registration
+classes = [Export2DFXOperator, Export2DFXMenu, ParticlePanel]
 
 def register():
-    bpy.utils.register_class(Export2DFXOperator)
-    bpy.utils.register_class(Export2DFXMenu)
-    bpy.utils.register_class(ParticlePanel)
+    for cls in classes:
+        bpy.utils.register_class(cls)
     bpy.types.TOPBAR_MT_file_export.append(menu_func_export)
     register_particle_property()
 
-
 def unregister():
-    bpy.utils.unregister_class(Export2DFXOperator)
-    bpy.utils.unregister_class(Export2DFXMenu)
-    bpy.utils.unregister_class(ParticlePanel)
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
     bpy.types.TOPBAR_MT_file_export.remove(menu_func_export)
-    del bpy.types.Object.particle_name  # Clean up property
-    del bpy.types.Object.particle_names  # Clean up property
-
+    del bpy.types.Object.particle_name
+    del bpy.types.Object.particle_names
 
 if __name__ == "__main__":
     register()

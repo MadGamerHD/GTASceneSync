@@ -30,13 +30,13 @@ IDE_FLAGS_ITEMS = [
 ]
 
 class IDEFlagsProperties(bpy.types.PropertyGroup):
+    """Property group for IDE flags used by GTASceneSync."""
     ide_flag: bpy.props.EnumProperty(
         name="IDE Flag",
         description="Select the IDE flag for the object",
         items=IDE_FLAGS_ITEMS,
         default="0",
     )
-
     render_distance: bpy.props.IntProperty(
         name="Render Distance",
         description="Set the render distance for the object",
@@ -45,15 +45,14 @@ class IDEFlagsProperties(bpy.types.PropertyGroup):
         max=1200,
         step=1,
     )
-
     texture_name: bpy.props.StringProperty(
         name="Texture Name",
         description="Specify the texture or TXD name for the object",
         default="generic",
     )
 
-
 class GTASceneSyncPanel(bpy.types.Panel):
+    """Panel for GTASceneSync settings on an object."""
     bl_label = "GTASceneSync"
     bl_idname = "OBJECT_PT_gtascenesync"
     bl_space_type = "PROPERTIES"
@@ -65,28 +64,29 @@ class GTASceneSyncPanel(bpy.types.Panel):
         layout = self.layout
         obj = context.object
 
-        # Ensure there is an active object and that it has the ide_flags property
         if obj:
-            if not hasattr(obj, "ide_flags"):
-                obj.ide_flags = bpy.context.scene.ide_flags
+            # Directly access the pointer property (assigned during registration)
             layout.prop(obj.ide_flags, "ide_flag")
             layout.prop(obj.ide_flags, "render_distance")
             layout.prop(obj.ide_flags, "texture_name")
         else:
             layout.label(text="No active object selected")
 
+# List of classes for simplified registration/unregistration
+classes = (
+    IDEFlagsProperties,
+    GTASceneSyncPanel,
+)
 
 def register():
-    bpy.utils.register_class(IDEFlagsProperties)
-    bpy.utils.register_class(GTASceneSyncPanel)
+    for cls in classes:
+        bpy.utils.register_class(cls)
     bpy.types.Object.ide_flags = bpy.props.PointerProperty(type=IDEFlagsProperties)
 
-
 def unregister():
-    bpy.utils.unregister_class(IDEFlagsProperties)
-    bpy.utils.unregister_class(GTASceneSyncPanel)
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
     del bpy.types.Object.ide_flags
-
 
 if __name__ == "__main__":
     register()

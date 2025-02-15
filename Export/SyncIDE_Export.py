@@ -14,7 +14,7 @@ class ExportAsIDE(bpy.types.Operator):
     bl_label = "Export Selected as IDE"
 
     filepath: bpy.props.StringProperty(subtype="FILE_PATH")
-    model_id: bpy.props.IntProperty(name="Starting Model ID", default=19388)
+    model_id: bpy.props.IntProperty(name="Starting Model ID", default=18631)
 
     def draw(self, context):
         layout = self.layout
