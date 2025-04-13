@@ -1,4 +1,4 @@
-# GTASceneSync 2.0.0
+# GTASceneSync 2.0.0 Discontinued
 
 **Thank you for using GTASceneSync!**
 
