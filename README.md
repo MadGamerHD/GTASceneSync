@@ -2,6 +2,8 @@
 
 **Thank you for using GTASceneSync!**
 
+Thank you for using this tool. However, I will no longer be updating it, as it's a bit of a mess. I’ll be releasing a new, revamped version soon on this page, which will replace the current tool. The new version will focus solely on IPL and IDE support for GTA games such as GTA III, Vice City, and San Andreas.
+
 ## Overview  
 **GTASceneSync** is a powerful Blender addon designed to simplify the process of exporting 3D models and scenes into formats compatible with *Grand Theft Auto* (GTA) games, including GTA San Andreas, GTA III, and GTA Vice City. It supports exporting IPL (Item Placement List) and IDE (Object Definition) files while providing tools for managing materials, object properties, and collisions—making it an indispensable utility for GTA modding and scene management.
 
