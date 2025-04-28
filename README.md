@@ -63,6 +63,10 @@ Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or th
 - Support for exporting both regular and binary IPL formats. Use Fastman92 Processor to process the binary IPL file.
 - Export to a 2DFX file by selecting a cube or mesh, positioning it, and choosing a particle in the panel.  
 
+## Previews
+![Screenshot 2025-04-28 162531](https://github.com/user-attachments/assets/96cf2f99-d6db-4573-9a14-0c6eaaebaa42)
+
+
 ## Future Updates  
 - Ongoing bug fixes and optimizations based on user feedback.  
 - Performance enhancements for all supported GTA formats.
