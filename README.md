@@ -20,12 +20,10 @@
   - Support for both regular and binary IPL exports. Use [Fastman92 Processor](https://gtaforums.com/topic/857375-fastman92-processor/) to process the binary IPL file.
 
 - **GTA III**:  
-  - Tailored export options for GTA III’s object placement system.  
-  - Scaling and rotation adjustments specific to GTA III.
+  - Experimental.
 
 - **GTA Vice City**:  
-  - Quaternion-based rotations for accurate in-game representation.  
-  - Seamlessly integrates with Vice City’s object system.
+  - Experimental.
 
 ### **Export to IDE**
 - Define object properties and settings for your scenes:  
