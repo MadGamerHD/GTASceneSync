@@ -3,7 +3,9 @@
 **Thank you for using GTASceneSync!**
 
 ## Summary
-- **GTA San Andreas (SA)**: Full IPL and IDE support.  
+- **✅ Stable and fully supported for IPL and IDE export.
+❌ LOD system is not included — use MED to set up LODs in-game.
+
 - **GTA III**: Experimental.  
 - **GTA Vice City**: Experimental.
 
