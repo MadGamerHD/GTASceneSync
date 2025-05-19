@@ -7,6 +7,16 @@
 - **GTA III**: Experimental.  
 - **GTA Vice City**: Experimental.
 
+❓ Common Questions
+Q: Can I load or view the GTA SA map in Blender with this?
+A: No. GTASceneSync is for creating new scenes and exporting them into the game — not for editing or viewing the existing map.
+
+Q: How do I use the exported IDE/IPL files?
+A: Place them in modloader or your mapped folder structure inside the GTA game directory. You can use MEd or other tools to see results in-game.
+
+Q: I exported my model but nothing shows up!
+A: Check your draw distance, IDE flag, and object placement. Also make sure textures (TXD) are properly defined.
+
 ## Overview
 **GTASceneSync** is a robust Blender addon that streamlines the process of exporting 3D models and scenes into formats compatible with *Grand Theft Auto* (GTA) games, including GTA San Andreas, GTA III, and GTA Vice City. With powerful tools for managing object properties, materials, collisions, and object placements, it is an essential utility for GTA modders and scene managers. It supports exporting both IPL (Item Placement List) and IDE (Object Definition) files.
 
