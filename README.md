@@ -3,6 +3,7 @@
 **Thank you for using GTASceneSync!**
 
 ## Summary
+- **GTA SA Support
 - **✅ Stable and fully supported for IPL and IDE export.
 ❌ LOD system is not included — use MED to set up LODs in-game.
 
