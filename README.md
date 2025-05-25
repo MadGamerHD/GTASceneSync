@@ -38,7 +38,7 @@
 
 * **IPL** (Item Placement List)
 * **IDE** (Object Definition)
-* **2DFX** (Particle effects)
+* **2DFX** (Particle effects) TXT
 
 Compatible with **GTA San Andreas**, **GTA III**, and **GTA Vice City** (experimental for the last two).
 
