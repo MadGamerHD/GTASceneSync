@@ -26,7 +26,7 @@
 
 **A:** Place them in your game directory (e.g., via ModLoader or custom folder structure). Use MEd, Fastman92 Processor, or other tools to preview in-game.
 
-**Q:** My model exported but nothing shows up. What should I check?
+**Q:** My File exported but nothing shows up. What should I check?
 
 **A:** Verify draw distances, IDE flags, TXD names, and object placement. Ensure textures and collision files are correctly referenced.
 
