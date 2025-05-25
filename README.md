@@ -2,94 +2,126 @@
 
 **Thank you for using GTASceneSync!**
 
+---
+
 ## Summary
-- **GTA SA Support
-- **✅ Stable and fully supported for IPL and IDE export.
-❌ LOD system is not included — use MED to set up LODs in-game.
 
-- **GTA III**: Experimental.  
-- **GTA Vice City**: Experimental.
+* **GTA San Andreas**: Stable and fully supported for IPL and IDE export.
+* **GTA III**: Experimental support.
+* **GTA Vice City**: Experimental support.
 
-❓ Common Questions
-Q: Can I load or view the GTA SA map in Blender with this?
-A: No. GTASceneSync is for creating new scenes and exporting them into the game — not for editing or viewing the existing map.
+**Note:** LOD system is *not* included—use MEd or in-game tools to configure LODs.
 
-Q: How do I use the exported IDE/IPL files?
-A: Place them in modloader or your mapped folder structure inside the GTA game directory. You can use MEd or other tools to see results in-game.
+> **Max Models per IPL:** Allows loading up to **11,552 DFF models** in a single IPL for massive custom maps and complex scenes.
 
-Q: I exported my model but nothing shows up!
-A: Check your draw distance, IDE flag, and object placement. Also make sure textures (TXD) are properly defined.
+---
+
+## Common Questions
+
+**Q:** Can I load or view the GTA SA map in Blender with this addon?
+
+**A:** No. GTASceneSync is designed for creating new scenes and exporting them to GTA games; it does *not* support editing or viewing the original map.
+
+**Q:** How do I use the exported IDE/IPL files?
+
+**A:** Place them in your game directory (e.g., via ModLoader or custom folder structure). Use MEd, Fastman92 Processor, or other tools to preview in-game.
+
+**Q:** My model exported but nothing shows up. What should I check?
+
+**A:** Verify draw distances, IDE flags, TXD names, and object placement. Ensure textures and collision files are correctly referenced.
+
+---
 
 ## Overview
-**GTASceneSync** is a robust Blender addon that streamlines the process of exporting 3D models and scenes into formats compatible with *Grand Theft Auto* (GTA) games, including GTA San Andreas, GTA III, and GTA Vice City. With powerful tools for managing object properties, materials, collisions, and object placements, it is an essential utility for GTA modders and scene managers. It supports exporting both IPL (Item Placement List) and IDE (Object Definition) files.
+
+**GTASceneSync** is a robust Blender addon that streamlines exporting 3D content to **Grand Theft Auto** formats. Ideal for modders and scene builders, it supports:
+
+* **IPL** (Item Placement List)
+* **IDE** (Object Definition)
+* **2DFX** (Particle effects)
+
+Compatible with **GTA San Andreas**, **GTA III**, and **GTA Vice City** (experimental for the last two).
+
+---
 
 ## Key Features
 
-### **Export to IPL**
-- **GTA San Andreas**:  
-  - Export mesh objects with auto-incremented model IDs to avoid conflicts.  
-  - Quaternion-based rotations for precise object orientation.  
-  - Default rotations and automatic cleanup of object names (removes numeric suffixes).  
-  - Support for both regular and binary IPL exports. Use [Fastman92 Processor](https://gtaforums.com/topic/857375-fastman92-processor/) to process the binary IPL file.
+### Export to IPL (GTA San Andreas)
 
-- **GTA III**:  
-  - Experimental.
+* Auto-incremented model IDs to avoid conflicts.
+* Quaternion-based rotations for precise orientation.
+* Binary and regular IPL export (use Fastman92 Processor for binary).
+* Automatic cleanup of object names (removes numeric suffixes).
 
-- **GTA Vice City**:  
-  - Experimental.
+### Export to IDE
 
-### **Export to IDE**
-- Define object properties and settings for your scenes:  
-  - Customizable object flags for defining special behaviors.  
-  - Adjustable render distances (0–1200 units) for optimized performance.  
-  - TXD name support for accurate in-game texture rendering.
+* Customizable object flags for special behaviors.
+* Adjustable render distances (0–1200 units) on a per-object basis.
+* TXD name support for accurate texture mapping.
 
-### **Export to 2DFX**
-- Export a 2DFX file by selecting a mesh or cube, positioning it, and choosing a particle in the panel.  
-- Open the exported 2DFX file in a text editor and save it as `.txt`.  
-- Use [2DFX Tool](https://github.com/MadGamerHD/2DFX-Tool) for conversion and [rw-analyze](https://github.com/andrenanninga/mashed/tree/master/tools/rw-analyze) to replace or add 2DFX data in the DFF file.
+### Export to 2DFX
 
-### **Tool Menu for Batch Operations**
-Access tools via the **GTASceneSync Panel** in the `Object Properties` tab or the **GTASceneSync Tools** menu:  
-- **Remove Materials**: Strip all materials from selected models.  
-- **Convert to Collisions**: Convert models into collision objects (requires DragonFF).  
-- **Rename Objects**: Batch rename selected models.  
-- **Reset Position**: Quickly reset object positions to (0, 0, 0).
+1. Select a mesh or cube and position it in Blender.
+2. Choose a particle preset in the addon panel.
+3. Export to `.2dfx` file and convert to `.txt` with 2DFX Tool or rw-analyze.
+
+### Batch Operations (GTASceneSync Panel & Tools Menu)
+
+* **Remove Materials**: Strip all materials from selected models.
+* **Convert to Collisions**: Turn meshes into collision geometry (requires DragonFF).
+* **Rename Objects**: Batch rename selected objects.
+* **Reset Position**: Reset location to (0, 0, 0).
+* **Set Render Distance**: Define per-model draw distances for optimized streaming.
+
+---
 
 ## Installation
-1. [Download the latest version](https://github.com/MadGamerHD/GTASceneSync/archive/refs/heads/main.zip) of the addon.  
-2. Install [DragonFF](https://github.com/Parik27/DragonFF), making sure to use the latest version or my edit below.  
-3. Open Blender, go to `Edit > Preferences`.  
-4. Navigate to the `Add-ons` tab, click `Install`, and select the downloaded `.zip` file.  
-5. Enable the addon by checking **GTASceneSync IPL-IDE** in the list.
+
+1. Download the latest ZIP from the [GitHub repo](https://github.com/MadGamerHD/GTAScenesync/archive/refs/heads/main.zip).
+2. Install or update [DragonFF](https://github.com/Parik27/DragonFF) (use the latest version or my [DragonFF-Edit](https://github.com/MadGamerHD/DragonFF-Edit)).
+3. In Blender: `Edit > Preferences > Add-ons > Install` → select the downloaded ZIP.
+4. Enable **GTASceneSync IPL-IDE** in the add-on list.
+
+---
 
 ## Usage
-1. **Access the Addon**: Export options are available under `File > Export`.  
-2. **Configure Objects**: In the **GTASceneSync Panel**:  
-   - Set render distances (0–1200 units).  
-   - Define TXD names.  
-   - Assign IDE flags from a predefined list.  
-3. **Batch Operations**: Use the **GTASceneSync Tools** menu for actions like removing materials, renaming objects, and resetting positions.  
-4. **Export**: Choose the appropriate format under `File > Export` (e.g., GTA Vice City IPL, GTA San Andreas IPL).
+
+1. **Access Exporters**: `File > Export` → choose GTA format.
+2. **Configure Objects** via the **GTASceneSync Panel**:
+
+   * Set per-object render distances.
+   * Assign TXD names and IDE flags.
+3. **Batch Tools** in the **GTASceneSync Tools** menu:
+
+   * Remove materials, rename, convert collisions, etc.
+4. **Export** to IPL, IDE, or 2DFX as needed.
+
+---
 
 ## What's New in 2.0.0
-- Added support for GTA Vice City IPL export with quaternion-based rotations.  
-- New batch operations: Remove materials, convert to collisions, rename objects, and reset positions.  
-- Fixed a crash issue in IPL export for GTA San Andreas.  
-- Support for both regular and binary IPL exports. Use Fastman92 Processor to process the binary IPL files.  
-- Added the ability to export to a 2DFX file. Select a cube or mesh, position it, and choose a particle to export.
+
+* **Max IPL Models:** Support for up to 11,552 DFFs in a single IPL. SA
+* Added GTA Vice City IPL export (quaternion-based rotation).
+* Batch tools: remove materials, convert to collisions, rename objects, reset positions.
+* Fixed crash in GTA SA IPL export.
+* 2DFX export workflow integrated.
+
+---
 
 ## Screenshots
-![Screenshot](https://github.com/user-attachments/assets/96cf2f99-d6db-4573-9a14-0c6eaaebaa42)
 
-## Future Updates
-- Ongoing bug fixes and performance optimizations based on user feedback.  
-- Enhancements for all supported GTA formats.
+![GTASceneSync Panel](https://github.com/MadGamerHD/GTAScenesync/assets/96cf2f99-d6db-4573-9a14-0c6eaaebaa42)
 
-## Contact and Support
-For feedback, inquiries, or support, reach out to **MadGamerHD** on YouTube at [bradzandmaxplays](https://www.youtube.com/@bradzandmaxplays).  
+---
 
-Stay tuned for more updates as we continue to improve GTASceneSync!
+## Future Plans
 
-Also, if you want to mass export DFF/COL files, check out my edit of DragonFF:  
-[DragonFF Edit](https://github.com/MadGamerHD/DragonFF-Edit)
+* Enhanced in-game LOD integration.
+* Performance optimizations based on feedback.
+* Better support for GTA III & Vice City.
+
+---
+
+## Support & Contact
+
+For issues or feature requests, open a GitHub issue or reach out on YouTube: **MadGamerHD** ([bradzandmaxplays](https://www.youtube.com/@bradzandmaxplays)).
