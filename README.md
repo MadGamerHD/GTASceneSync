@@ -2,6 +2,8 @@
 
 > Export GTA San Andreas IDE & IPL files directly from Blender—batch settings, per‑object flags, draw distances, and texture dictionaries, all in one panel.
 
+Note: This tool has been rewritten with usability in mind. All features will be returning soon—thank you for your patience!
+
 ---
 
 ## ✨ Features
