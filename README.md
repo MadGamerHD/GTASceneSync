@@ -36,7 +36,7 @@
 1. Copy the `GTASceneSync/` folder into Blender’s addon path:  
    - **Windows:** `%AppData%\Blender\4.0\scripts\addons\`  
    - **macOS/Linux:** `~/.config/blender/4.0/scripts/addons/`
-2. In Blender: **Edit ▶ Preferences ▶ Add-ons**, search **GTASceneSync**, enable it, then **Save Preferences**.
+2. In Blender: **Edit ▶ Preferences ▶ Add-ons**, install **GTASceneSync**, enable it.
 
 ---
 
