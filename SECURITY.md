@@ -1,6 +1,7 @@
 # Security Policy
 ## Supported Versions
 
+GTASceneSync
 | Version | Supported          |
 | ------- | ------------------ |
 | 2.1.0x   | Stable Release: |
