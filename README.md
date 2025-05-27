@@ -12,7 +12,7 @@
   - Includes TXD name, render distance & flag for each object  
 
 - **IPL Export**  
-  - ASCII (`.ipl`) or binary (`.ipl`) export  
+  - ASCII (`.ipl`) or binary (`.ipl`) export  ... Note Binary is not been tested
   - Optional global rotation offset (Euler angles)  
   - World‑space placement using Blender’s transforms → GTA quaternions
 
