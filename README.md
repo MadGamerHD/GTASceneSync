@@ -27,6 +27,10 @@
 
 ---
 
+## Preview
+![Screenshot 2025-05-27 191149](https://github.com/user-attachments/assets/ea20b4e6-6562-4e0b-9f98-8fbc6920900d)
+
+
 ## 🛠️ Installation
 
 1. Copy the `GTASceneSync/` folder into Blender’s addon path:  
