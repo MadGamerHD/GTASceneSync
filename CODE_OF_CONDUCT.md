@@ -1,4 +1,4 @@
-**GTASceneSync 2.0.0 Code of Conduct**  
+**GTASceneSync Code of Conduct**  
 *Last Updated: 24/01/2025*
 
 The GTASceneSync 2.0.0 Blender Addon is an open-source tool designed to assist the GTA modding community in creating high-quality content. To maintain a positive and productive environment, all users and contributors must adhere to the following Code of Conduct.
