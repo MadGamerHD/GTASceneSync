@@ -1,6 +1,6 @@
 bl_info = {
     "name": "GTASceneSync (SA Only)",
-    "author": "Your Name",
+    "author": "MadGamerHD",
     "version": (2, 2, 0),
     "blender": (4, 0, 0),
     "location": "View3D > UI > GTASceneSync",
