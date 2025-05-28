@@ -152,6 +152,6 @@ Adjust these before exporting to fine‑tune individual entries.
 ---
 
 ## Tips & Best Practices
-* **Clean Naming**: The add‑on strips trailing numeric suffixes (e.g. `Car.001` → `Car`), so you can model copies without worrying about duplicate entries.
+* **Clean Naming**: The add‑on strips trailing numeric suffixes (e.g. `object.001` → `object`), so you can model copies without worrying about duplicate entries.
 * **Batch First**: Assign TXDs and flags in batch, then tweak per-object settings to save time.
 * **Rotation Offset**: Use **Apply Default Rotation** on IPL export if your models were authored in a different up‑axis or need a uniform orientation tweak.
