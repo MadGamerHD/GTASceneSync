@@ -127,7 +127,7 @@ Adjust these before exporting to fine‑tune individual entries.
 
    * **Starting Model ID**
    * **Apply Default Rotation** (and specify Euler angles)
-   * **Export Type**: ASCII (`normal`) or binary (`bnry`)
+   * **Export Type**: ASCII (`normal`) or binary (`bnry`) .. Note Binary Is Experimental
 5. Confirm → generates the `.ipl` file with instance definitions:
 
    * ASCII format begins with `inst` block, each line:
